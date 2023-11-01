@@ -1,6 +1,6 @@
 import moment from "moment-timezone";
 import { useEffect, useState } from "react";
-import "./Clock.css"
+import "./Clock.css";
 
 function Clock() {
   const [timeZone, setTimeZone] = useState("Asia/Kolkata");
@@ -23,11 +23,13 @@ function Clock() {
     <div className="Clock">
       <h1 className="time-heading">Current Time</h1>
       <p className="time">{time}</p>
-      {timeZones.map((zone) => (
-        <button className="zones" onClick={() => handleZone(zone)}>
-          {zone}
-        </button>
-      ))}
+      <div className="grid">
+        {timeZones.map((zone) => (
+          <button className="button-68" onClick={() => handleZone(zone)}>
+            {zone}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }

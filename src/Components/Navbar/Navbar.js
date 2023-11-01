@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import "../Navbar/Navbar.css"
+import "../Navbar/Navbar.css";
 import { Link } from "react-router-dom";
 
 function Navbar() {
@@ -9,12 +9,12 @@ function Navbar() {
       <ul className="nav-links">
         <li>
           <Link to="/" className="nav-buttons">
-            <i class="fa-solid fa-clock"></i>
+            <i className="fa-solid fa-clock icons"></i>
           </Link>
         </li>
         <li>
-          <Link to="/" className="nav-buttons">
-            Time
+          <Link to="/stopwatch" className="nav-buttons">
+            <i className="fa-solid fa-stopwatch icons"></i>
           </Link>
         </li>
       </ul>
