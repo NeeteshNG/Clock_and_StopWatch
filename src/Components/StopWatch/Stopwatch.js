@@ -62,13 +62,13 @@ function Stopwatch() {
         <h1 className="watch-heading">Stop Watch</h1>
         <div className="watch-timer">{formatTime(elapsed)}</div>
         <div className="controlling-buttons">
-            <button onClick={start} disabled={running}>
+            <button className="button-72" onClick={start} disabled={running}>
             Start
             </button>
-            <button onClick={stop} disabled={!running}>
+            <button className="button-72" onClick={stop} disabled={!running}>
             Stop
             </button>
-            <button onClick={reset}>Reset</button>
+            <button className="button-72" onClick={reset}>Reset</button>
         </div>
         </div>
     );
