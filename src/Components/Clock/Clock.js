@@ -36,7 +36,7 @@ function Clock() {
       <p className="time">{time}</p>
       <div className="grid">
         {displayedTimeZones.map((zone) => (
-          <button className="button-68" onClick={() => handleZone(zone)}>
+          <button className="button-68" key={zone} onClick={() => handleZone(zone)}>
             {zone}
           </button>
         ))}

@@ -2,76 +2,87 @@ import React, { useEffect, useState } from "react";
 import "./Stopwatch.css";
 
 function Stopwatch() {
-    const [running, setRunning] = useState(false);
-    const [startTime, setStartTime] = useState(0);
-    const [elapsed, setElapsed] = useState(0);
+  const [time, setTime] = useState(0);
+  const [isRunning, setIsRunning] = useState(false);
+  const [laps, setLaps] = useState([]);
 
-    useEffect(() => {
-        let interval;
+  useEffect(() => {
+    let intervalId;
+    if (isRunning) {
+      intervalId = setInterval(() => setTime(time + 1), 10);
+    }
+    return () => clearInterval(intervalId);
+  }, [isRunning, time]);
 
-        if (running) {
-        interval = setInterval(() => {
-            const now = new Date().getTime();
-            const timeElapsed = startTime ? now - startTime + elapsed : elapsed;
+  const hours = Math.floor(time / 360000);
+  const minutes = Math.floor((time % 360000) / 6000);
+  const seconds = Math.floor((time % 6000) / 100);
+  const milliseconds = time % 100;
 
-            setElapsed(timeElapsed);
-        }, 10);
-        } else {
-        clearInterval(interval);
-        }
+  const start = () => {
+    setIsRunning(true);
+  };
 
-        return () => clearInterval(interval);
-    }, [running, startTime, elapsed]);
+  const stop = () => {
+    setIsRunning(false);
+  };
 
-    const start = () => {
-        if (!running) {
-        setStartTime(new Date().getTime() - elapsed);
-        setRunning(true);
-        }
-    };
+  const reset = () => {
+    setTime(0);
+    setLaps([]);
+  };
 
-    const stop = () => {
-        if (running) {
-        setRunning(false);
-        }
-    };
+  const recordLap = () => {
+    setLaps([...laps, time]);
+  };
 
-    const reset = () => {
-        setRunning(false);
-        setStartTime(0);
-        setElapsed(0);
-    };
-
-    const formatTime = (milliseconds) => {
-        const totalMilliseconds = Math.floor(milliseconds);
-        const hours = Math.floor(totalMilliseconds / 3600000);
-        const minutes = Math.floor((totalMilliseconds % 3600000) / 60000);
-        const seconds = Math.floor((totalMilliseconds % 60000) / 1000);
-        const centiseconds = Math.floor((totalMilliseconds % 1000) / 10);
-
-        return (
-        `${hours.toString().padStart(2, "0")}:` +
-        `${minutes.toString().padStart(2, "0")}:` +
-        `${seconds.toString().padStart(2, "0")}.` +
-        `${centiseconds.toString().padStart(2, "0")}`
-        );
-    };
-
-    return (
-        <div className="stopwatch-page">
-        <h1 className="watch-heading">Stop Watch</h1>
-        <div className="watch-timer">{formatTime(elapsed)}</div>
-        <div className="controlling-buttons">
-            <button className="button-72" onClick={start} disabled={running}>
-            Start
-            </button>
-            <button className="button-72" onClick={stop} disabled={!running}>
-            Stop
-            </button>
-            <button className="button-72" onClick={reset}>Reset</button>
+  return (
+    <div className="stopwatch-page">
+      <h1 className="watch-heading">Stop Watch</h1>
+      <div className="watch">
+        <div className="watch-timer">
+          {hours}:{minutes.toString().padStart(2, "0")}:
+          {seconds.toString().padStart(2, "0")}
         </div>
+        <div className="miliseconds">
+          {milliseconds.toString().padStart(2, "0")}
         </div>
-    );
+      </div>
+      <div className="controlling-buttons">
+        <button className="button-72" onClick={start}>
+          <i className="fa-solid fa-play"></i>
+        </button>
+        <button className="button-72" onClick={stop} disabled={!isRunning}>
+          <i className="fa-solid fa-stop"></i>
+        </button>
+        <button className="button-72" onClick={reset}>
+          <i className="fa-solid fa-power-off"></i>
+        </button>
+        <button className="button-72" onClick={recordLap} disabled={!isRunning}>
+          <i className="fa-solid fa-bookmark"></i>
+        </button>
+      </div>
+      <div className="lap-list">
+        <ul>
+          {laps.map((lapTime, index) => (
+            <li key={index}>
+              Lap {index + 1}   :    {formatLapTime(lapTime)}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+function formatLapTime(lapTime) {
+  const hours = Math.floor(lapTime / 360000);
+  const minutes = Math.floor((lapTime % 360000) / 6000);
+  const seconds = Math.floor((lapTime % 6000) / 100);
+  const milliseconds = lapTime % 100;
+  return `${hours}:${minutes.toString().padStart(2, "0")}:${seconds
+    .toString()
+    .padStart(2, "0")}.${milliseconds.toString().padStart(2, "0")}`;
 }
 
 export default Stopwatch;
