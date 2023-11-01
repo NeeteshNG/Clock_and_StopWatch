@@ -1,8 +1,8 @@
 import moment from "moment-timezone";
-import "./App.css";
 import { useEffect, useState } from "react";
+import "./Clock.css"
 
-function App() {
+function Clock() {
   const [timeZone, setTimeZone] = useState("Asia/Kolkata");
   const [time, setTime] = useState(moment().tz(timeZone).format("LTS"));
   const timeZones = moment.tz.names();
@@ -20,7 +20,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="Clock">
       <h1 className="time-heading">Current Time</h1>
       <p className="time">{time}</p>
       {timeZones.map((zone) => (
@@ -32,4 +32,4 @@ function App() {
   );
 }
 
-export default App;
+export default Clock;
