@@ -1,0 +1,73 @@
+.body-navbar {
+    width: 100%;
+    top: 0;
+    position: fixed;
+    z-index: 1000;
+}
+
+.nav-links {
+    display: flex;
+    margin: 0;
+    width: 100%;
+    align-items: center;
+    background: #144981;
+    padding: 20px 15px;
+}
+
+.nav-links li {
+    list-style: none;
+    margin: 0 12px;
+}
+
+.nav-links li .nav-buttons {
+    position: relative;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 6px 0;
+    text-decoration: none;
+}
+
+.nav-links li .nav-buttons:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: white;
+    border-radius: 12px;
+    transition: all 0.4s ease;
+}
+
+.nav-links li .nav-buttons:hover:before {
+    width: 100%;
+}
+
+.nav-links li.center .nav-buttons:before {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-links li.upward .nav-buttons:before {
+    width: 100%;
+    bottom: -5px;
+    opacity: 0;
+}
+
+.nav-links li.upward .nav-buttons:hover:before {
+    bottom: 0px;
+    opacity: 1;
+}
+
+.nav-links li.forward .nav-buttons:before {
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s ease;
+}
+
+.nav-links li.forward .nav-buttons:hover:before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
