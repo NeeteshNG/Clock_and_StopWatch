@@ -1,0 +1,10 @@
+.stopwatch-page{
+    margin-top: 100px
+}
+
+.watch-timer {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    font-size: 100px;
+}
