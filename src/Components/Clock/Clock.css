@@ -117,25 +117,5 @@
 }
 
 .page-numbers {
-  margin-top: 25px;
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 5px;
-}
-
-.page-numbers li {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  background-color: #ccc;
-  color: #333;
-  cursor: pointer;
-}
-
-.page-numbers li.current-page {
-  background-color: #27ae60;
-  color: #fff;
+  color: #27ae60;
 }
