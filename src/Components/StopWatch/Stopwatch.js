@@ -63,7 +63,7 @@ function Stopwatch() {
   };
 
   const recordLap = () => {
-    setLaps([...laps, timerDuration - time]);
+    setLaps([...laps, time]);
   };
 
   return (
