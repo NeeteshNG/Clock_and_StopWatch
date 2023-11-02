@@ -17,6 +17,19 @@ function Navbar() {
             <i className="fa-solid fa-stopwatch icons"></i>
           </Link>
         </li>
+        <div className="ul_git">
+            <div className="il_git">
+              <a
+                href="https://github.com/NeeteshNG/MyTaskBestPeers_5"
+                rel="noreferrer"
+                target="_blank"
+                title="Git Repo"
+                className="git-click"
+              >
+                <i className="fab fa-github size_git"></i>
+              </a>
+            </div>
+          </div>
       </ul>
 
       <Outlet />
