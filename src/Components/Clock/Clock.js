@@ -37,6 +37,7 @@ function Clock() {
       <div className="grid">
         {displayedTimeZones.map((zone) => (
           <button
+            data-testid="zone-button"
             className="button-68"
             key={zone}
             onClick={() => handleZone(zone)}
@@ -49,17 +50,19 @@ function Clock() {
         {timeZones.length > itemsPerPage && (
           <div className="pagination">
             <button
+              data-testid="prev-button"
               className="button-74"
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 0}
             >
               <i className="fa-solid fa-circle-arrow-right fa-rotate-180"></i>
             </button>
-            <h1 className="page-numbers">
+            <h1 data-testid="current-page" className="page-numbers">
               {currentPage + 1}
             </h1>
             <button
               className="button-74"
+              data-testid="next-button"
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={endIndex >= timeZones.length}
             >
