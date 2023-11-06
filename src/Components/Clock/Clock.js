@@ -13,7 +13,7 @@ function Clock() {
   const startIndex = currentPage * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const displayedTimeZones = timeZones.slice(startIndex, endIndex);
-
+  
   useEffect(() => {
     const interval = setInterval(() => {
       setTime(moment().tz(timeZone).format("LTS"));
@@ -32,7 +32,7 @@ function Clock() {
 
   return (
     <div className="Clock">
-      <h1 className="timeZone">{timeZone}</h1>
+      <h1 data-testid="timeZone" className="timeZone">{timeZone}</h1>
       <p className="time">{time}</p>
       <div className="grid">
         {displayedTimeZones.map((zone) => (
@@ -46,7 +46,7 @@ function Clock() {
           </button>
         ))}
       </div>
-      <div className="pagination-container">
+      <div data-testid="pagination-container" className="pagination-container">
         {timeZones.length > itemsPerPage && (
           <div className="pagination">
             <button

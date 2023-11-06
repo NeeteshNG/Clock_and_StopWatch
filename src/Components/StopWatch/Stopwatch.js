@@ -94,6 +94,7 @@ function Stopwatch() {
           type="number"
           placeholder="0"
           value={inputMin}
+          data-testid="input-min"
           onChange={(e) => setInputMin(e.target.value)}
         />
         <button className="button-91" onClick={startTimer}>
@@ -101,20 +102,20 @@ function Stopwatch() {
         </button>
       </div>
       <div className="controlling-buttons">
-        <button className="button-72" onClick={start} disabled={isRunning}>
+        <button data-testid="start" className="button-72" onClick={start} disabled={isRunning}>
           <i className="fa-solid fa-play"></i>
         </button>
-        <button className="button-72" onClick={stop} disabled={!isRunning}>
+        <button data-testid="stop" className="button-72" onClick={stop} disabled={!isRunning}>
           <i className="fa-solid fa-stop"></i>
         </button>
-        <button className="button-72" onClick={reset}>
+        <button data-testid="reset" className="button-72" onClick={reset}>
           <i className="fa-solid fa-power-off"></i>
         </button>
-        <button className="button-72" onClick={recordLap} disabled={!isRunning}>
+        <button data-testid="lap" className="button-72" onClick={recordLap} disabled={!isRunning}>
           <i className="fa-solid fa-bookmark"></i>
         </button>
       </div>
-      <div className="lap-list">
+      <div data-testid="lap-list" className="lap-list">
         <ul>
           {laps.map((lapTime, index) => (
             <li key={index}>
