@@ -68,7 +68,7 @@ function Stopwatch() {
 
   return (
     <div className="stopwatch-page">
-      <h1 className="watch-heading">Stop Watch</h1>
+      <h1 className="watch-heading">Stop-Watch</h1>
       <div className="watch">
         <div className="watch-timer">
           {hours}:{minutes.toString().padStart(2, "0")}:
